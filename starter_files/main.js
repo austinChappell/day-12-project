@@ -99,6 +99,10 @@ let formData = [
 let fields = document.querySelector('.fields');
 
 for(let i=0; i<formData.length; i++) {
+  let div = document.createElement('div');
+  div.classList.add('relative');
+  let icon = document.createElement('i');
+  let iconClass = formData[i].icon;
   let label = formData[i].label;
   if (formData[i].type === 'select') {
     let dropdown = document.createElement('select');
@@ -107,16 +111,27 @@ for(let i=0; i<formData.length; i++) {
       option.textContent = formData[i].options[j].label;
       dropdown.appendChild(option);
     }
-    fields.appendChild(dropdown);
+    div.appendChild(dropdown);
   } else if(formData[i].type === 'textarea') {
     let input = document.createElement('textarea');
     input.setAttribute('type', formData[i].type);
     input.setAttribute('placeholder', label);
-    fields.appendChild(input);
+    input.classList.add('padding-left');
+    icon.classList.add('fa');
+    icon.classList.add(iconClass);
+    icon.classList.add('absolute');
+    div.appendChild(icon);
+    div.appendChild(input);
   } else {
     let input = document.createElement('input');
     input.setAttribute('type', formData[i].type);
     input.setAttribute('placeholder', label);
-    fields.appendChild(input);
+    input.classList.add('padding-left');
+    icon.classList.add('fa');
+    icon.classList.add(iconClass);
+    icon.classList.add('absolute');
+    div.appendChild(icon);
+    div.appendChild(input);
   }
+  fields.appendChild(div);
 }

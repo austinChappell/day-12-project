@@ -57,3 +57,28 @@
   border-radius: 3px;
   font-size: 15px;
 }
+
+.absolute {
+  position: absolute;
+  top: 23px;
+  left: 30px;
+  color: gray;
+}
+
+.relative {
+  position: relative;
+}
+
+.padding-left {
+  padding-left: 40px;
+}
+
+.wrapper .fields input,
+.wrapper .fields textarea {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.wrapper .fields select {
+  width: 95%;
+}
