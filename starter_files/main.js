@@ -104,26 +104,20 @@ for(let i=0; i<formData.length; i++) {
   let icon = document.createElement('i');
   let iconClass = formData[i].icon;
   let label = formData[i].label;
+  let input;
   if (formData[i].type === 'select') {
-    let dropdown = document.createElement('select');
+    input = document.createElement('select');
     for (let j=0; j<formData[i].options.length; j++) {
       let option = document.createElement('option');
       option.textContent = formData[i].options[j].label;
-      dropdown.appendChild(option);
+      input.appendChild(option);
     }
-    div.appendChild(dropdown);
-  } else if(formData[i].type === 'textarea') {
-    let input = document.createElement('textarea');
-    input.setAttribute('type', formData[i].type);
-    input.setAttribute('placeholder', label);
-    input.classList.add('padding-left');
-    icon.classList.add('fa');
-    icon.classList.add(iconClass);
-    icon.classList.add('absolute');
-    div.appendChild(icon);
-    div.appendChild(input);
   } else {
-    let input = document.createElement('input');
+    if(formData[i].type === 'textarea') {
+      input = document.createElement('textarea');
+    } else {
+      input = document.createElement('input');
+    }
     input.setAttribute('type', formData[i].type);
     input.setAttribute('placeholder', label);
     input.classList.add('padding-left');
@@ -131,7 +125,7 @@ for(let i=0; i<formData.length; i++) {
     icon.classList.add(iconClass);
     icon.classList.add('absolute');
     div.appendChild(icon);
-    div.appendChild(input);
   }
+  div.appendChild(input);
   fields.appendChild(div);
 }
