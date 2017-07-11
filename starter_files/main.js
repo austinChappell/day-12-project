@@ -100,7 +100,7 @@ let fields = document.querySelector('.fields');
 
 for(let i=0; i<formData.length; i++) {
   let label = formData[i].label;
-  if (formData[i].options.length > 0) {
+  if (formData[i].type === 'select') {
     let dropdown = document.createElement('select');
     for (let j=0; j<formData[i].options.length; j++) {
       let option = document.createElement('option');
@@ -108,6 +108,11 @@ for(let i=0; i<formData.length; i++) {
       dropdown.appendChild(option);
     }
     fields.appendChild(dropdown);
+  } else if(formData[i].type === 'textarea') {
+    let input = document.createElement('textarea');
+    input.setAttribute('type', formData[i].type);
+    input.setAttribute('placeholder', label);
+    fields.appendChild(input);
   } else {
     let input = document.createElement('input');
     input.setAttribute('type', formData[i].type);
